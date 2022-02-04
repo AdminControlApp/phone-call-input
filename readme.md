@@ -28,3 +28,34 @@ So, I decided to use Twilio's Voice API to programatically call my parents when 
 4. They pick up the phone, hear the message, and type those 4 digits.
 5. Twilio will then send a request to my ngrok URL at the `/voice` endpoint with their input.
 6. I then run an AppleScript script that emulates keystrokes of their input on my computer.
+
+## Usage
+
+Clone this repository to a folder and navigate to it:
+
+```bash
+git clone https://github.com/leonzalion/phone-call-pass
+cd phone-call-pass
+```
+
+Install the dependencies using your favourite package manager (I recommend [pnpm](https://pnpm.io)):
+
+```bash
+pnpm install
+```
+
+Then, add an `.env` file to the root of the project with the following keys:
+
+```env
+TWILIO_ACCOUNT_SID= # Your Twilio account ID
+TWILIO_AUTH_TOKEN= # Your Twilio auth token
+PHONE_NUMBER_TO_CALL= # The number you want to call
+ORIGIN_PHONE_NUMBER= # Your Twilio number
+PORT= # The port you want to run the server on (optional, default: 5050)
+```
+
+To initiate a call to the number you specified in your `.env` file, run:
+
+```bash
+pnpm start
+```
