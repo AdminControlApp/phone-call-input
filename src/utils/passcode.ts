@@ -1,3 +1,4 @@
+import process from 'node:process';
 import pWaitFor from 'p-wait-for';
 import { runAppleScript } from 'run-applescript';
 import inquirer from 'inquirer';
@@ -29,5 +30,7 @@ export async function inputPasscodeKeystrokes(passcode: string) {
 
 	if (reinput) {
 		await inputPasscodeKeystrokes(passcode);
+	} else {
+		process.exit(0);
 	}
 }
