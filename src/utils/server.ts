@@ -43,7 +43,7 @@ export async function startAppServer() {
 
 	app.post('/voice', async (request, reply) => {
 		const callSpinner = getCallSpinner();
-		callSpinner.text = 'Call answered. Waiting for 4-digit passcode input...';
+		callSpinner.start('Call answered. Waiting for 4-digit passcode input...');
 
 		const voice = new twiml.VoiceResponse();
 

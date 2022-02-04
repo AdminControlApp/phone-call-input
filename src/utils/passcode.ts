@@ -7,23 +7,21 @@ import { getCallSpinner } from '~/utils/spinner.js';
 
 export async function inputPasscodeKeystrokes(passcode: string) {
 	const callSpinner = getCallSpinner();
-	callSpinner.stop();
+	callSpinner.text = '🔒 Waiting for focus on a secure input textbox...';
 
-	await pWaitFor(
-		() => {
-			console.info('🔒 Waiting for focus on a secure input textbox...');
-			return getSecureInputApps().length > 0;
-		},
-		{ interval: 1000 }
-	);
+	console.info('');
+	await pWaitFor(() => getSecureInputApps().length > 0, { interval: 1000 });
 
 	await runAppleScript(
 		`tell application "System Events" to keystroke "${passcode}"`
 	);
 
+	callSpinner.stop();
+
 	const { reinput } = await inquirer.prompt<{ reinput: boolean }>([
 		{
 			name: 'reinput',
+			message: 'Reinput the password?',
 			type: 'confirm',
 		},
 	]);
