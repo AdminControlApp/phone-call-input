@@ -12,7 +12,7 @@
 	"type": "module",
 	"scripts": {
 		"prepare": "lion-git-hooks",
-		"start": "node-ts ./src/index.ts",
+		"start": "node-ts ./src/bin/start.ts",
 		"test": "NODE_OPTIONS=--experimental-vm-modules jest",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write src",
@@ -49,8 +49,12 @@
 		]
 	},
 	"dependencies": {
+		"dotenv": "^16.0.0",
 		"fastify": "^3.27.1",
+		"fastify-formbody": "^5.2.0",
 		"ngrok": "^4.3.0",
+		"onetime": "^6.0.0",
+		"run-applescript": "^6.0.0",
 		"twilio": "^3.73.1"
 	}
 }
