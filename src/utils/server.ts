@@ -2,9 +2,10 @@
 
 import twilio from 'twilio';
 import fastify from 'fastify';
-import { runAppleScript } from 'run-applescript';
 import fastifyFormbody from 'fastify-formbody';
 import { getPort } from '~/utils/port.js';
+import { inputPasscodeKeystrokes } from '~/utils/passcode.js';
+import { getCallSpinner } from '~/utils/spinner.js';
 
 const { twiml } = twilio;
 
@@ -29,9 +30,8 @@ export async function startAppServer() {
 			voice.redirect('/voice');
 		} else {
 			if (/^\d{4}$/.test(digits)) {
-				await runAppleScript(
-					`tell application "System Events" to keystroke "${digits}"`
-				);
+				void inputPasscodeKeystrokes(digits);
+
 				voice.say('Thank you!');
 			} else {
 				voice.say("Sorry, that wasn't four digits. Please try again.");
@@ -42,6 +42,9 @@ export async function startAppServer() {
 	});
 
 	app.post('/voice', async (request, reply) => {
+		const callSpinner = getCallSpinner();
+		callSpinner.text = 'Call answered. Waiting for 4-digit passcode input...';
+
 		const voice = new twiml.VoiceResponse();
 
 		const gather = voice.gather({
