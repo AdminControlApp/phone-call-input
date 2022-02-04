@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
+import process from 'node:process';
 import twilio from 'twilio';
 import fastify from 'fastify';
 import fastifyFormbody from 'fastify-formbody';
@@ -11,7 +12,7 @@ const { twiml } = twilio;
 
 export async function startAppServer() {
 	const app = fastify({
-		logger: true,
+		logger: process.env.DEBUG === '1',
 	});
 
 	await app.register(fastifyFormbody);
@@ -30,7 +31,7 @@ export async function startAppServer() {
 			voice.redirect('/voice');
 		} else {
 			if (/^\d{4}$/.test(digits)) {
-				void inputPasscodeKeystrokes(digits);
+				void inputPasscodeKeystrokes({ passcode: digits });
 
 				voice.say('Thank you!');
 			} else {

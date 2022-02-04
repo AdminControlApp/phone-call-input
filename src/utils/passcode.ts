@@ -2,21 +2,34 @@ import process from 'node:process';
 import pWaitFor from 'p-wait-for';
 import { runAppleScript } from 'run-applescript';
 import inquirer from 'inquirer';
+import logSymbols from 'log-symbols';
 import { getSecureInputApps } from '~/utils/secure-input.js';
 import { getCallSpinner } from '~/utils/spinner.js';
 
-export async function inputPasscodeKeystrokes(passcode: string) {
+export async function inputPasscodeKeystrokes({
+	passcode,
+	isReinput = false,
+}: {
+	passcode: string;
+	isReinput?: boolean;
+}) {
 	const callSpinner = getCallSpinner();
-	callSpinner.text = '🔒 Waiting for focus on a secure input textbox...';
+	if (isReinput) {
+		callSpinner.start('🔒 Waiting for focus on a secure input textbox...');
+	} else {
+		callSpinner.start(
+			'🔒 Passcode entered. Waiting for focus on a secure input textbox...'
+		);
+	}
 
-	console.info('');
-	await pWaitFor(() => getSecureInputApps().length > 0, { interval: 1000 });
+	await pWaitFor(() => getSecureInputApps().length > 0, { interval: 500 });
 
 	await runAppleScript(
 		`tell application "System Events" to keystroke "${passcode}"`
 	);
 
 	callSpinner.stop();
+	console.info(logSymbols.success, 'Password successfully inputted!');
 
 	const { reinput } = await inquirer.prompt<{ reinput: boolean }>([
 		{
@@ -27,7 +40,7 @@ export async function inputPasscodeKeystrokes(passcode: string) {
 	]);
 
 	if (reinput) {
-		await inputPasscodeKeystrokes(passcode);
+		await inputPasscodeKeystrokes({ passcode, isReinput: true });
 	} else {
 		process.exit(0);
 	}

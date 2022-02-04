@@ -57,6 +57,7 @@
 		"fastify": "^3.27.1",
 		"fastify-formbody": "^5.2.0",
 		"inquirer": "^8.2.0",
+		"log-symbols": "^5.1.0",
 		"ngrok": "^4.3.0",
 		"onetime": "^6.0.0",
 		"ora": "^6.0.1",

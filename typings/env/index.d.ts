@@ -7,6 +7,7 @@ declare global {
 			TWILIO_AUTH_TOKEN: string;
 			PHONE_NUMBER_TO_CALL: string;
 			ORIGIN_PHONE_NUMBER: string;
+			DEBUG?: string;
 		}
 	}
 }
