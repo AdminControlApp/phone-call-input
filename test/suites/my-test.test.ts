@@ -1,3 +1,3 @@
 test('my test', () => {
-	// empty
+	// Empty
 });
