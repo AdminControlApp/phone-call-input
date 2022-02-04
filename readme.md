@@ -22,12 +22,12 @@ So, I decided to use Twilio's Voice API to programatically call my parents when 
 
 ## Flow
 
-1. I run a command from my terminal
+1. I run a command from my terminal.
 2. My command starts a Node.js server and spins up an ngrok server that allows my local server to be accessed from the Internet via a URL.
 3. My command starts a voice call to my parents' phone number, which is preprogrammed to say some short message about entering the 4-digit passcode into their keypad.
 4. They pick up the phone, hear the message, and type those 4 digits.
 5. Twilio will then send a request to my ngrok URL at the `/voice` endpoint with their input.
-6. I then run an AppleScript script that emulates keystrokes of their input on my computer.
+6. I then run an AppleScript script that inputs keystrokes based on their passcode input on my computer (I configured my code such that the AppleScript only executes when the user is focused on a secure textbox so that the password isn't accidentally leaked).
 
 ## Usage
 
