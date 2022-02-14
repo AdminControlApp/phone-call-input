@@ -62,7 +62,7 @@ export async function startAppServer() {
 		await reply.type('text/xml').send(voice.toString());
 	});
 
-	const address = await app.listen(getPort());
+	const address = await app.listen(getPort(), '0.0.0.0');
 
 	console.log(`🚀 Server started on ${address}`);
 
