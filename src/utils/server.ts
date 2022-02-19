@@ -31,7 +31,16 @@ export async function startAppServer() {
 			voice.redirect('/voice');
 		} else {
 			if (/^\d{4}$/.test(digits)) {
-				void inputPasscodeKeystrokes({ passcode: digits });
+				void inputPasscodeKeystrokes({ passcode: digits }).catch(
+					(error: unknown) => {
+						const err = error as Error;
+						console.error('There was an error.');
+						// Replace all numeric characters with asterisks to prevent leaking
+						// the password
+						console.error('Name:', err.name.replace(/\d/g, '*'));
+						console.error('Message:', err.message.replace(/\d/g, '*'));
+					}
+				);
 
 				voice.say('Thank you!');
 			} else {
