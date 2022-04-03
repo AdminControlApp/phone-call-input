@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 import process from 'node:process';
 import twilio from 'twilio';
 import fastify from 'fastify';
@@ -31,7 +29,7 @@ export async function startAppServer() {
 			voice.redirect('/voice');
 		} else {
 			if (/^\d{4}$/.test(digits)) {
-				void inputPasscodeKeystrokes({ passcode: digits }).catch(
+				inputPasscodeKeystrokes({ passcode: digits }).catch(
 					(error: unknown) => {
 						const err = error as Error;
 						console.error('There was an error.');
