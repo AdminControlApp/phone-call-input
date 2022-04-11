@@ -12,7 +12,6 @@
 	"bin": "./src/bin/start.js",
 	"type": "module",
 	"scripts": {
-		"prepare": "lion-git-hooks",
 		"build": "node-ts ./scripts/build.ts",
 		"start": "pnpm run start --filter=./packages/phone-call-pass",
 		"test": "vitest run",
