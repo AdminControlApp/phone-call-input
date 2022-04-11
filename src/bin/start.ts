@@ -10,7 +10,8 @@ program
 	.option('--origin-phone-number <phone-number>')
 	.option('--destination-phone-number <phone-number>')
 	.option('--twilio-account-sid <twilio-account-sid>')
-	.option('--twilio-auth-token <twilio-auth-token>');
+	.option('--twilio-auth-token <twilio-auth-token>')
+	.option('--ngrok-bin-path <ngrok-bin-path>');
 
 program.parse();
 
@@ -19,6 +20,7 @@ const opts = program.opts<{
 	destinationPhoneNumber?: string;
 	twilioAccountSid?: string;
 	twilioAuthToken?: string;
+	ngrokBinPath?: string;
 }>();
 
 const originPhoneNumber =
@@ -28,6 +30,7 @@ const destinationPhoneNumber =
 const twilioAccountSid =
 	opts.twilioAccountSid ?? process.env.TWILIO_ACCOUNT_SID;
 const twilioAuthToken = opts.twilioAuthToken ?? process.env.TWILIO_AUTH_TOKEN;
+const { ngrokBinPath } = opts;
 
 if (originPhoneNumber === undefined) {
 	throw new Error('Origin phone number not provided.');
@@ -48,7 +51,10 @@ if (twilioAuthToken === undefined) {
 try {
 	const port = await getPort();
 	await startAppServer({ port });
-	const ngrokServerUrl = await startNgrokServer({ port });
+	const ngrokServerUrl = await startNgrokServer({
+		port,
+		binPath: ngrokBinPath,
+	});
 	await makeCall({
 		ngrokServerUrl,
 		destinationPhoneNumber,
