@@ -9,8 +9,10 @@
 		"email": "contact@leonzalion.com",
 		"url": "https://leonzalion.com"
 	},
+	"bin": "./src/bin/start.js",
 	"type": "module",
 	"scripts": {
+		"build": "node-ts ./scripts/build.ts",
 		"prepare": "lion-git-hooks",
 		"start": "node-ts ./src/bin/start.ts",
 		"test": "vitest run",
