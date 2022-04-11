@@ -26,8 +26,8 @@ const originPhoneNumber =
 const destinationPhoneNumber =
 	opts.destinationPhoneNumber ?? process.env.DESTINATION_PHONE_NUMBER;
 const twilioAccountSid =
-	opts.originPhoneNumber ?? process.env.TWILIO_ACCOUNT_SID;
-const twilioAuthToken = opts.originPhoneNumber ?? process.env.TWILIO_AUTH_TOKEN;
+	opts.twilioAccountSid ?? process.env.TWILIO_ACCOUNT_SID;
+const twilioAuthToken = opts.twilioAuthToken ?? process.env.TWILIO_AUTH_TOKEN;
 
 if (originPhoneNumber === undefined) {
 	throw new Error('Origin phone number not provided.');
