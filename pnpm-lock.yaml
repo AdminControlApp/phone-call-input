@@ -4,6 +4,7 @@ specifiers:
   '@leonzalion/configs': ^1.2.11
   '@types/inquirer': ^8.2.1
   '@types/node': ^17.0.23
+  commander: ^9.1.0
   delay: ^5.0.0
   desm: ^1.2.0
   dotenv: ^16.0.0
@@ -11,6 +12,7 @@ specifiers:
   execa: ^6.1.0
   fastify: ^3.28.0
   fastify-formbody: ^5.2.0
+  get-port: ^6.1.2
   inquirer: ^8.2.2
   lion-system: ^1.2.1
   log-symbols: ^5.1.0
@@ -24,12 +26,14 @@ specifiers:
   vitest: ^0.9.3
 
 dependencies:
+  commander: 9.1.0
   delay: 5.0.0
   desm: 1.2.0
   dotenv: 16.0.0
   execa: 6.1.0
   fastify: 3.28.0
   fastify-formbody: 5.2.0
+  get-port: 6.1.2
   inquirer: 8.2.2
   log-symbols: 5.1.0
   ngrok: 4.3.1
@@ -1318,7 +1322,6 @@ packages:
   /commander/9.1.0:
     resolution: {integrity: sha512-i0/MaqBtdbnJ4XQs4Pmyb+oFQl+q0lsAmokVUH92SlSw4fkeAcG3bVon+Qt7hmtF+u3Het6o4VgrcY3qAoEB6w==}
     engines: {node: ^12.20.0 || >=14}
-    dev: true
 
   /commondir/1.0.1:
     resolution: {integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=}
@@ -2686,6 +2689,11 @@ packages:
       function-bind: 1.1.1
       has: 1.0.3
       has-symbols: 1.0.3
+
+  /get-port/6.1.2:
+    resolution: {integrity: sha512-BrGGraKm2uPqurfGVj/z97/zv8dPleC6x9JBNRTrDNtCkkRF4rPwrQXFgL7+I+q8QSdU4ntLQX2D7KIxSy8nGw==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
 
   /get-set-props/0.1.0:
     resolution: {integrity: sha1-mYR1wXhEVobQsyJG2l3428++jqM=}

@@ -1,9 +1,7 @@
 import ngrok from 'ngrok';
 
-import { getPort } from '~/utils/port.js';
-
-export async function startNgrokServer() {
-	const ngrokServerUrl = await ngrok.connect(getPort());
+export async function startNgrokServer({ port }: { port: number }) {
+	const ngrokServerUrl = await ngrok.connect(port);
 	console.info(`✨ ngrok server started at ${ngrokServerUrl}`);
 	return ngrokServerUrl;
 }

@@ -4,12 +4,11 @@ import process from 'node:process';
 import twilio from 'twilio';
 
 import { inputPasscodeKeystrokes } from '~/utils/passcode.js';
-import { getPort } from '~/utils/port.js';
 import { getCallSpinner } from '~/utils/spinner.js';
 
 const { twiml } = twilio;
 
-export async function startAppServer() {
+export async function startAppServer({ port }: { port: number }) {
 	const app = fastify({
 		logger: process.env.DEBUG === '1',
 	});
@@ -70,7 +69,7 @@ export async function startAppServer() {
 		await reply.type('text/xml').send(voice.toString());
 	});
 
-	const address = await app.listen(getPort(), '0.0.0.0');
+	const address = await app.listen(port, '0.0.0.0');
 
 	console.log(`🚀 Server started on ${address}`);
 
