@@ -1,8 +1,4 @@
 import { execaCommandSync as exec } from 'execa';
-import { chProjectDir, copyPackageFiles, rmDist } from 'lion-system';
 
-chProjectDir(import.meta.url);
-rmDist();
-exec('tsc');
-exec('tsc-alias');
-copyPackageFiles();
+exec('pnpm run build --filter=./packages/secure-input');
+exec('pnpm run build --filter=./packages/phone-call-pass');

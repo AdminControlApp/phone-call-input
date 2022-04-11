@@ -1,56 +1,116 @@
 lockfileVersion: 5.3
 
-specifiers:
-  '@leonzalion/configs': ^1.2.11
-  '@types/inquirer': ^8.2.1
-  '@types/node': ^17.0.23
-  commander: ^9.1.0
-  delay: ^5.0.0
-  desm: ^1.2.0
-  dotenv: ^16.0.0
-  eslint-define-config: ^1.3.0
-  execa: ^6.1.0
-  fastify: ^3.28.0
-  fastify-formbody: ^5.2.0
-  get-port: ^6.1.2
-  inquirer: ^8.2.2
-  lion-system: ^1.2.1
-  log-symbols: ^5.1.0
-  ngrok: ^4.3.1
-  onetime: ^6.0.0
-  ora: ^6.1.0
-  p-wait-for: ^4.1.0
-  run-applescript: ^6.0.0
-  twilio: ^3.76.1
-  typescript: ^4.6.3
-  vitest: ^0.9.3
+importers:
 
-dependencies:
-  commander: 9.1.0
-  delay: 5.0.0
-  desm: 1.2.0
-  dotenv: 16.0.0
-  execa: 6.1.0
-  fastify: 3.28.0
-  fastify-formbody: 5.2.0
-  get-port: 6.1.2
-  inquirer: 8.2.2
-  log-symbols: 5.1.0
-  ngrok: 4.3.1
-  onetime: 6.0.0
-  ora: 6.1.0
-  p-wait-for: 4.1.0
-  run-applescript: 6.0.0
-  twilio: 3.76.1
+  .:
+    specifiers:
+      '@leonzalion/configs': ^1.2.11
+      '@types/inquirer': ^8.2.1
+      '@types/node': ^17.0.23
+      commander: ^9.1.0
+      delay: ^5.0.0
+      desm: ^1.2.0
+      dotenv: ^16.0.0
+      eslint-define-config: ^1.3.0
+      execa: ^6.1.0
+      fastify: ^3.28.0
+      fastify-formbody: ^5.2.0
+      get-port: ^6.1.2
+      inquirer: ^8.2.2
+      lion-system: ^1.2.1
+      log-symbols: ^5.1.0
+      ngrok: ^4.3.1
+      onetime: ^6.0.0
+      ora: ^6.1.0
+      p-wait-for: ^4.1.0
+      run-applescript: ^6.0.0
+      twilio: ^3.76.1
+      typescript: ^4.6.3
+      vitest: ^0.9.3
+    dependencies:
+      commander: 9.1.0
+      delay: 5.0.0
+      desm: 1.2.0
+      dotenv: 16.0.0
+      execa: 6.1.0
+      fastify: 3.28.0
+      fastify-formbody: 5.2.0
+      get-port: 6.1.2
+      inquirer: 8.2.2
+      log-symbols: 5.1.0
+      ngrok: 4.3.1
+      onetime: 6.0.0
+      ora: 6.1.0
+      p-wait-for: 4.1.0
+      run-applescript: 6.0.0
+      twilio: 3.76.1
+    devDependencies:
+      '@leonzalion/configs': 1.2.11_typescript@4.6.3
+      '@types/inquirer': 8.2.1
+      '@types/node': 17.0.23
+      eslint-define-config: 1.3.0
+      lion-system: 1.2.1
+      typescript: 4.6.3
+      vitest: 0.9.3
 
-devDependencies:
-  '@leonzalion/configs': 1.2.11_typescript@4.6.3
-  '@types/inquirer': 8.2.1
-  '@types/node': 17.0.23
-  eslint-define-config: 1.3.0
-  lion-system: 1.2.1
-  typescript: 4.6.3
-  vitest: 0.9.3
+  packages/phone-call-pass:
+    specifiers:
+      '@leonzalion/configs': ^1.2.11
+      '@types/inquirer': ^8.2.1
+      '@types/node': ^17.0.23
+      commander: ^9.1.0
+      delay: ^5.0.0
+      desm: ^1.2.0
+      dotenv: ^16.0.0
+      eslint-define-config: ^1.3.0
+      execa: ^6.1.0
+      fastify: ^3.28.0
+      fastify-formbody: ^5.2.0
+      get-port: ^6.1.2
+      inquirer: ^8.2.2
+      lion-system: ^1.2.1
+      log-symbols: ^5.1.0
+      ngrok: ^4.3.1
+      onetime: ^6.0.0
+      ora: ^6.1.0
+      p-wait-for: ^4.1.0
+      run-applescript: ^6.0.0
+      secure-input: link:../secure-input
+      twilio: ^3.76.1
+      typescript: ^4.6.3
+      vitest: ^0.9.3
+    dependencies:
+      commander: 9.1.0
+      delay: 5.0.0
+      desm: 1.2.0
+      dotenv: 16.0.0
+      execa: 6.1.0
+      fastify: 3.28.0
+      fastify-formbody: 5.2.0
+      get-port: 6.1.2
+      inquirer: 8.2.2
+      log-symbols: 5.1.0
+      ngrok: 4.3.1
+      onetime: 6.0.0
+      ora: 6.1.0
+      p-wait-for: 4.1.0
+      run-applescript: 6.0.0
+      secure-input: link:../secure-input
+      twilio: 3.76.1
+    devDependencies:
+      '@leonzalion/configs': 1.2.11_typescript@4.6.3
+      '@types/inquirer': 8.2.1
+      '@types/node': 17.0.23
+      eslint-define-config: 1.3.0
+      lion-system: 1.2.1
+      typescript: 4.6.3
+      vitest: 0.9.3
+
+  packages/secure-input:
+    specifiers:
+      '@napi-rs/cli': ^2.6.2
+    devDependencies:
+      '@napi-rs/cli': 2.6.2
 
 packages:
 
@@ -332,6 +392,12 @@ packages:
       - enquirer
       - supports-color
       - typescript
+    dev: true
+
+  /@napi-rs/cli/2.6.2:
+    resolution: {integrity: sha512-EmH+DQDEBUIoqMim0cc+X96ImtcIZLFjgW5WWORpzYnA9Ug7zNPO7jCLMhIQRd/p5AdWaXrT4SVXc/aip09rKQ==}
+    engines: {node: '>= 10'}
+    hasBin: true
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
