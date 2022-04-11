@@ -1,8 +1,9 @@
+import inquirer from 'inquirer';
+import logSymbols from 'log-symbols';
 import process from 'node:process';
 import pWaitFor from 'p-wait-for';
 import { runAppleScript } from 'run-applescript';
-import inquirer from 'inquirer';
-import logSymbols from 'log-symbols';
+
 import { getSecureInputApps } from '~/utils/secure-input.js';
 import { getCallSpinner } from '~/utils/spinner.js';
 

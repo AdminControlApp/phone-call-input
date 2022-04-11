@@ -1,5 +1,5 @@
-import { execaSync } from 'execa';
 import { join } from 'desm';
+import { execaSync } from 'execa';
 
 export function getSecureInputApps(): Array<{ pid: number; name: string }> {
 	const secureInputAppPids = JSON.parse(

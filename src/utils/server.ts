@@ -1,9 +1,10 @@
-import process from 'node:process';
-import twilio from 'twilio';
 import fastify from 'fastify';
 import fastifyFormbody from 'fastify-formbody';
-import { getPort } from '~/utils/port.js';
+import process from 'node:process';
+import twilio from 'twilio';
+
 import { inputPasscodeKeystrokes } from '~/utils/passcode.js';
+import { getPort } from '~/utils/port.js';
 import { getCallSpinner } from '~/utils/spinner.js';
 
 const { twiml } = twilio;
