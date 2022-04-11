@@ -12,6 +12,7 @@
 	"bin": "./src/bin/start.js",
 	"type": "module",
 	"scripts": {
+		"release": "lionp",
 		"prepare": "lion-git-hooks",
 		"build": "node-ts ./scripts/build.ts",
 		"start": "pnpm run start --filter=./packages/phone-call-pass",
@@ -27,5 +28,8 @@
 		"execa": "^6.1.0",
 		"lion-system": "^1.2.1",
 		"typescript": "^4.6.3"
+	},
+	"publishConfig": {
+		"directory": "dist"
 	}
 }
