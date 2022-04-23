@@ -11,7 +11,7 @@ exec('napi build --platform --release --config napi.config.json', {
 await copyPackageFiles({
 	additionalFiles: [
 		'src/secure-input/secure-input.darwin-x64.node',
-		'src/secure-input/index.js',
+		'src/secure-input/index.cjs',
 		'src/secure-input/index.d.ts',
 	],
 });
