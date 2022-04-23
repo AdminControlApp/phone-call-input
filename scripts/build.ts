@@ -8,8 +8,6 @@ exec('napi build --platform --release --config napi.config.json', {
 	stdio: 'inherit',
 	cwd: join(import.meta.url, '../src/secure-input'),
 });
-exec('tsc');
-exec('tsc-alias');
 await copyPackageFiles({
 	additionalFiles: [
 		'src/secure-input/secure-input.darwin-x64.node',
@@ -17,3 +15,5 @@ await copyPackageFiles({
 		'src/secure-input/index.d.ts',
 	],
 });
+exec('tsc');
+exec('tsc-alias');
