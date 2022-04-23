@@ -133,3 +133,7 @@ npm
 rustfmt.toml
 yarn.lock
 *.node
+
+!dist
+dist/*
+!dist/.gitkeep
