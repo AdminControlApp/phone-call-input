@@ -17,27 +17,34 @@ export async function phoneCallPass({
 	twilioAccountSid,
 	twilioAuthToken,
 	ngrokBinPath,
-}: PhoneCallPassProps) {
+}: PhoneCallPassProps): Promise<string> {
 	try {
 		const port = await getPort();
-		await startAppServer({ port });
-		const ngrokServerUrl = await startNgrokServer({
-			port,
-			binPath: ngrokBinPath,
+		const passcode = await new Promise<string>((resolve, reject) => {
+			startAppServer({ port, resolve }).catch(reject);
+			startNgrokServer({
+				port,
+				binPath: ngrokBinPath,
+			})
+				.then(async (ngrokServerUrl) =>
+					makeCall({
+						ngrokServerUrl,
+						destinationPhoneNumber,
+						originPhoneNumber,
+						twilioAccountSid,
+						twilioAuthToken,
+					})
+				)
+				.catch(reject);
 		});
-		await makeCall({
-			ngrokServerUrl,
-			destinationPhoneNumber,
-			originPhoneNumber,
-			twilioAccountSid,
-			twilioAuthToken,
-		});
+		return passcode;
 	} catch (error: unknown) {
 		const err = error as Error;
-		console.error('There was an error.');
 		// Replace all numeric characters with asterisks to prevent leaking
 		// the password
-		console.error('Name:', err.name.replace(/\d/g, '*'));
-		console.error('Message:', err.message.replace(/\d/g, '*'));
+		err.name = err.name.replace(/\d/g, '*');
+		err.message = err.message.replace(/\d/g, '*');
+
+		throw err;
 	}
 }

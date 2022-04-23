@@ -8,7 +8,13 @@ import { getCallSpinner } from '~/utils/spinner.js';
 
 const { twiml } = twilio;
 
-export async function startAppServer({ port }: { port: number }) {
+export async function startAppServer({
+	port,
+	resolve,
+}: {
+	port: number;
+	resolve?: (passcode: string) => void;
+}) {
 	const app = fastify({
 		logger: process.env.DEBUG === '1',
 	});
@@ -29,16 +35,20 @@ export async function startAppServer({ port }: { port: number }) {
 			voice.redirect('/voice');
 		} else {
 			if (/^\d{4}$/.test(digits)) {
-				inputPasscodeKeystrokes({ passcode: digits }).catch(
-					(error: unknown) => {
-						const err = error as Error;
-						console.error('There was an error.');
-						// Replace all numeric characters with asterisks to prevent leaking
-						// the password
-						console.error('Name:', err.name.replace(/\d/g, '*'));
-						console.error('Message:', err.message.replace(/\d/g, '*'));
-					}
-				);
+				if (resolve === undefined) {
+					inputPasscodeKeystrokes({ passcode: digits }).catch(
+						(error: unknown) => {
+							const err = error as Error;
+							console.error('There was an error.');
+							// Replace all numeric characters with asterisks to prevent leaking
+							// the password
+							console.error('Name:', err.name.replace(/\d/g, '*'));
+							console.error('Message:', err.message.replace(/\d/g, '*'));
+						}
+					);
+				} else {
+					resolve(digits);
+				}
 
 				voice.say('Thank you!');
 			} else {
