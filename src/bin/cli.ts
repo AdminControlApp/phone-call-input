@@ -1,10 +1,6 @@
 import { program } from 'commander';
-import getPort from 'get-port';
 import process from 'node:process';
-
-import { makeCall } from '~/utils/call.js';
-import { startNgrokServer } from '~/utils/ngrok.js';
-import { startAppServer } from '~/utils/server.js';
+import { phoneCallPass } from '../utils/phone-call-pass.js';
 
 program
 	.option('--origin-phone-number <phone-number>')
@@ -48,25 +44,10 @@ if (twilioAuthToken === undefined) {
 	throw new Error('Twilio auth token not provided.');
 }
 
-try {
-	const port = await getPort();
-	await startAppServer({ port });
-	const ngrokServerUrl = await startNgrokServer({
-		port,
-		binPath: ngrokBinPath,
-	});
-	await makeCall({
-		ngrokServerUrl,
-		destinationPhoneNumber,
-		originPhoneNumber,
-		twilioAccountSid,
-		twilioAuthToken,
-	});
-} catch (error: unknown) {
-	const err = error as Error;
-	console.error('There was an error.');
-	// Replace all numeric characters with asterisks to prevent leaking
-	// the password
-	console.error('Name:', err.name.replace(/\d/g, '*'));
-	console.error('Message:', err.message.replace(/\d/g, '*'));
-}
+await phoneCallPass({
+	destinationPhoneNumber,
+	originPhoneNumber,
+	twilioAccountSid,
+	twilioAuthToken,
+	ngrokBinPath,
+});

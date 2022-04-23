@@ -1,3 +1,2 @@
 packages:
-  - packages/phone-call-pass
-  - packages/secure-input
+  - packages/*
