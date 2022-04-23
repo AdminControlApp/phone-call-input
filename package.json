@@ -12,6 +12,7 @@
 	"bin": "./src/bin/start.js",
 	"type": "module",
 	"scripts": {
+		"release": "lionp",
 		"build": "node-ts ./scripts/build.ts",
 		"start": "node-ts ./src/bin/start.ts",
 		"test": "vitest run",
