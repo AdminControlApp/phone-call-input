@@ -1,6 +1,6 @@
 {
 	"name": "phone-call-pass",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"description": "Remotely enter a numeric passcode from a phone call.",
 	"license": "MIT",
 	"repository": "leonzalion/phone-call-pass",
