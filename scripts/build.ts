@@ -4,7 +4,7 @@ import { chProjectDir, copyPackageFiles, rmDist } from 'lion-system';
 
 chProjectDir(import.meta.url);
 rmDist();
-exec('napi build --platform --release --config napi.config.json', {
+exec('napi build --platform --release --config napi.config.json --js index.cjs --dts index.d.cts', {
 	stdio: 'inherit',
 	cwd: join(import.meta.url, '../src/secure-input'),
 });
