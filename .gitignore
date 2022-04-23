@@ -121,3 +121,15 @@ dist-ssr
 # Cache files
 .eslintcache
 tsconfig.tsbuildinfo
+
+# Rust
+target
+Cargo.lock
+.cargo
+.github
+npm
+.eslintrc
+.prettierignore
+rustfmt.toml
+yarn.lock
+*.node

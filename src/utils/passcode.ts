@@ -3,8 +3,8 @@ import logSymbols from 'log-symbols';
 import process from 'node:process';
 import pWaitFor from 'p-wait-for';
 import { runAppleScript } from 'run-applescript';
-import { getSecureInputProcesses } from '~/secure-input';
 
+import { getSecureInputProcesses } from '~/secure-input/index.js';
 import { getCallSpinner } from '~/utils/spinner.js';
 
 export async function inputPasscodeKeystrokes({
