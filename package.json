@@ -21,8 +21,7 @@
 		"tc": "tsc --noEmit",
 		"artifacts": "napi artifacts",
 		"build:debug": "napi build --platform",
-		"prepublishOnly": "napi prepublish -t npm",
-		"version": "napi version"
+		"prepublishOnly": "napi prepublish -t npm"
 	},
 	"devDependencies": {
 		"@leonzalion/configs": "^1.2.25",
