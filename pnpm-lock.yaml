@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@leonzalion/configs': ^1.2.25
+  '@leonzalion/configs': ^1.2.29
   '@napi-rs/cli': ^2.6.2
   '@types/inquirer': ^8.2.1
   '@types/node': ^17.0.25
@@ -45,7 +45,7 @@ dependencies:
   twilio: 3.76.1
 
 devDependencies:
-  '@leonzalion/configs': 1.2.25_typescript@4.7.0-dev.20220423
+  '@leonzalion/configs': 1.2.29_typescript@4.7.0-dev.20220423
   '@napi-rs/cli': 2.6.2
   '@types/inquirer': 8.2.1
   '@types/node': 17.0.25
@@ -286,8 +286,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@leonzalion/configs/1.2.25_typescript@4.7.0-dev.20220423:
-    resolution: {integrity: sha512-kSrhTMXNKevtnyVGQnb3h13e8kBAwlwWmfRnRXukhxBMskgLB+U1k0r0Sbp6iOmXyFYrQCibAFzNj5xdc4f2dg==}
+  /@leonzalion/configs/1.2.29_typescript@4.7.0-dev.20220423:
+    resolution: {integrity: sha512-he9zPelPu0KcXRtp9ryiynxT2S2SdRvXmsa4nIkCl/WLU7EvigHan/+anz4bpkgarGBTijKYsy3fd+qPoRa5NA==}
     hasBin: true
     dependencies:
       '@commitlint/cli': 16.2.3_@swc+core@1.2.171
@@ -324,7 +324,7 @@ packages:
       prettier: 2.6.2
       resolve: 1.22.0
       ts-node: 10.7.0_bb341d790d898fbdc16e3b9582e5908f
-      tsc-alias: 1.6.6
+      tsc-alias: 1.6.7
       tsconfig-paths: 3.14.1
       update-notifier: 5.1.0
       webpack: /lodash.noop/3.0.1
@@ -4779,6 +4779,12 @@ packages:
       find-up: 6.3.0
     dev: true
 
+  /plimit-lit/1.2.6:
+    resolution: {integrity: sha512-EuVnKyDeFgr58aidKf2G7DI41r23bxphlvBKAZ8e8dT9of0Ez2g9w6JbJGUP1YBNC2yG9+ZCCbjLj4yS1P5Gzw==}
+    dependencies:
+      queue-lit: 1.2.7
+    dev: true
+
   /plur/4.0.0:
     resolution: {integrity: sha512-4UGewrYgqDFw9vV6zNV+ADmPAUAfJPKtGvb/VdpQAx25X5f3xXdGdyOEVFwkl8Hl/tl7+xbeHqSEM+D5/TirUg==}
     engines: {node: '>=10'}
@@ -4892,6 +4898,10 @@ packages:
   /querystringify/2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
     dev: false
+
+  /queue-lit/1.2.7:
+    resolution: {integrity: sha512-K/rTdggORRcmf3+c89ijPlgJ/ldGP4oBj6Sm7VcTup4B2clf03Jo8QaXTnMst4EEQwkUbOZFN4frKocq2I85gw==}
+    dev: true
 
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
@@ -5636,8 +5646,8 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /tsc-alias/1.6.6:
-    resolution: {integrity: sha512-wQuIKleaPuQKpTwrzFb1gTOd3ZsB5GqIK+aPyh1okOLfYYNsMyxIypIYctQnSxiJ243iRxLdvNlboZOTEdK1MQ==}
+  /tsc-alias/1.6.7:
+    resolution: {integrity: sha512-GRbZx/zTee01JtrHB7hkddgxn+aQqYDmRaFv/MTYIqBbk/L8Zf0nA/T60wXOr/Q7002YXppUFXsqsu5ViWB4vQ==}
     hasBin: true
     dependencies:
       chokidar: 3.5.3
@@ -5645,6 +5655,7 @@ packages:
       globby: 11.1.0
       mylas: 2.1.9
       normalize-path: 3.0.0
+      plimit-lit: 1.2.6
     dev: true
 
   /tsconfig-paths/3.14.1:
