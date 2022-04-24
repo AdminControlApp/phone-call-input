@@ -3746,7 +3746,7 @@ packages:
       pkg-up: 4.0.0
       rfdc: 1.3.0
       rollup: 2.70.2
-      rollup-plugin-bundle-esm: 0.1.0
+      rollup-plugin-bundle-esm: 0.1.1
       rollup-plugin-peer-deps-external: 2.2.4_rollup@2.70.2
       tslib: 2.4.0
     transitivePeerDependencies:
@@ -5012,11 +5012,12 @@ packages:
       glob: 7.2.0
     dev: true
 
-  /rollup-plugin-bundle-esm/0.1.0:
-    resolution: {integrity: sha512-EKN8jlEMREemUWIHXT54NPigAsLrGusBC6uCdc33IBvEC4gKPifKanDn/HScJeqKB1KFIsuCDbuDM/CtB7wjkA==}
+  /rollup-plugin-bundle-esm/0.1.1:
+    resolution: {integrity: sha512-KAVVVtr/eYVxTtfCDNFpP//CuhNbfD+Mgxppqk1Rpk3xwoAyd3tN2gk8NIwVoWmX80pdVJtaWOZxGJ4xxixDSA==}
     dependencies:
       '@sindresorhus/is': 4.6.0
       is-file-esm: 1.0.0
+      pkg-up: 4.0.0
       type-fest: 2.12.2
     dev: true
 
@@ -5873,15 +5874,12 @@ packages:
     hasBin: true
     dependencies:
       '@eslint/eslintrc': 1.2.2
-      '@typescript-eslint/eslint-plugin': 5.20.0_81f0d1a74f014d44d273bd1612c85fd9
-      '@typescript-eslint/parser': 5.20.0_eslint@8.14.0+typescript@4.6.3
       arrify: 3.0.0
       cosmiconfig: 7.0.1
       define-lazy-prop: 3.0.0
       eslint: 8.14.0
       eslint-config-prettier: 8.5.0_eslint@8.14.0
       eslint-config-xo: 0.40.0_eslint@8.14.0
-      eslint-config-xo-typescript: 0.50.0_e7a300b26844813a4ad7af0fc0b6271b
       eslint-formatter-pretty: 4.1.0
       eslint-import-resolver-webpack: 0.13.2_7f5a2a74ac610a03e7ee1903121a979f
       eslint-plugin-ava: 13.2.0_eslint@8.14.0
