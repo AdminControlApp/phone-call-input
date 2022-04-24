@@ -4,7 +4,7 @@ import process from 'node:process';
 import pWaitFor from 'p-wait-for';
 import { runAppleScript } from 'run-applescript';
 
-import { getSecureInputProcesses } from '~/secure-input/index.cjs';
+// import { getSecureInputProcesses } from '~/secure-input/index.cjs';
 import { getCallSpinner } from '~/utils/spinner.js';
 
 export async function inputPasscodeKeystrokes({
@@ -23,7 +23,7 @@ export async function inputPasscodeKeystrokes({
 		);
 	}
 
-	await pWaitFor(() => getSecureInputProcesses().length > 0, { interval: 500 });
+	// await pWaitFor(() => getSecureInputProcesses().length > 0, { interval: 500 });
 
 	await runAppleScript(
 		`tell application "System Events" to keystroke "${passcode}"`
