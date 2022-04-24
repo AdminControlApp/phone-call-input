@@ -81,7 +81,7 @@ export async function startAppServer({
 
 	const address = await app.listen(port, '0.0.0.0');
 
-	console.log(`🚀 Server started on ${address}`);
+	console.info(`🚀 Server started on ${address}`);
 
 	return app;
 }
