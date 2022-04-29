@@ -1,5 +1,5 @@
 import fastify from 'fastify';
-import fastifyFormbody from 'fastify-formbody';
+import fastifyFormbody from '@fastify/formbody';
 import process from 'node:process';
 import twilio from 'twilio';
 
