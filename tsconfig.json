@@ -6,7 +6,7 @@
 		"paths": {
 			"~/*": ["./src/*"]
 		},
-		"types": ["./typings/env", "./typings/secure-input"]
+		"types": ["./typings/env"]
 	},
 	"include": ["./src"]
 }
