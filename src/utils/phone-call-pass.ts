@@ -21,7 +21,7 @@ export async function phoneCallPass({
 	try {
 		const port = await getPort();
 		const passcode = await new Promise<string>((resolve, reject) => {
-			startAppServer({ port, inputPasscode: false })
+			startAppServer({ port, shouldAutoInputPasscode: false })
 				.then(resolve)
 				.catch(reject);
 
