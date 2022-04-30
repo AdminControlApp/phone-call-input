@@ -1,4 +1,4 @@
-# Phone Call Pass
+# Phone Call Input
 
 A project that lets you initiate a call to somebody who can then enter a passcode on their phone that gets inputted into your computer.
 
@@ -34,8 +34,8 @@ So, I decided to use Twilio's Voice API to programatically call my parents when 
 Clone this repository to a folder and navigate to it:
 
 ```bash
-git clone https://github.com/leonzalion/phone-call-pass
-cd phone-call-pass
+git clone https://github.com/AdminControlApp/phone-call-input
+cd phone-call-input
 ```
 
 Install the dependencies using your favourite package manager (I recommend [pnpm](https://pnpm.io)):

@@ -1,9 +1,9 @@
 {
-	"name": "phone-call-pass",
+	"name": "phone-call-input",
 	"version": "0.0.3",
-	"description": "Remotely enter a numeric passcode from a phone call.",
+	"description": "Retrieve input from a phone call.",
 	"license": "MIT",
-	"repository": "leonzalion/phone-call-pass",
+	"repository": "AdminControlApp/phone-call-input",
 	"author": {
 		"name": "Leon Si",
 		"email": "contact@leonzalion.com",
@@ -44,6 +44,7 @@
 		"fastify": "^3.28.0",
 		"@fastify/formbody": "^6.0.0",
 		"get-port": "^6.1.2",
+		"get-secure-input-processes": "^0.0.0",
 		"inquirer": "^8.2.2",
 		"log-symbols": "^5.1.0",
 		"ngrok": "^4.3.1",

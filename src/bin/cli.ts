@@ -1,7 +1,7 @@
 import { program } from 'commander';
 import process from 'node:process';
 
-import { phoneCallPass } from '../utils/phone-call-pass.js';
+import { phoneCallInput } from '../utils/phone-call-input.js';
 
 program
 	.option('--origin-phone-number <phone-number>')
@@ -45,7 +45,7 @@ if (twilioAuthToken === undefined) {
 	throw new Error('Twilio auth token not provided.');
 }
 
-await phoneCallPass({
+await phoneCallInput({
 	destinationPhoneNumber,
 	originPhoneNumber,
 	twilioAccountSid,

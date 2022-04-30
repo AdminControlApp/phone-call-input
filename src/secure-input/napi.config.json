@@ -1,8 +1,0 @@
-{
-	"napi": {
-		"name": "secure-input",
-		"triples": {
-			"additional": ["aarch64-apple-darwin"]
-		}
-	}
-}

@@ -4,20 +4,20 @@ import { makeCall } from './call.js';
 import { startNgrokServer } from './ngrok.js';
 import { startAppServer } from './server.js';
 
-type PhoneCallPassProps = {
+type PhoneCallInputProps = {
 	ngrokBinPath?: string;
 	destinationPhoneNumber: string;
 	originPhoneNumber: string;
 	twilioAccountSid: string;
 	twilioAuthToken: string;
 };
-export async function phoneCallPass({
+export async function phoneCallInput({
 	destinationPhoneNumber,
 	originPhoneNumber,
 	twilioAccountSid,
 	twilioAuthToken,
 	ngrokBinPath,
-}: PhoneCallPassProps): Promise<string> {
+}: PhoneCallInputProps): Promise<string> {
 	try {
 		const port = await getPort();
 		const passcode = await new Promise<string>((resolve, reject) => {

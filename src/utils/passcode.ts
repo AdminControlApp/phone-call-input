@@ -6,7 +6,7 @@ import { runAppleScript } from 'run-applescript';
 
 import { getCallSpinner } from '~/utils/spinner.js';
 
-import { getSecureInputProcesses } from '../secure-input/index.cjs';
+import { getSecureInputProcesses } from 'get-secure-input-processes';
 
 export async function inputPasscodeKeystrokes({
 	passcode,
