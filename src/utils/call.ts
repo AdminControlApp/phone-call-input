@@ -22,6 +22,7 @@ export async function makeCall({
 		to: destinationPhoneNumber,
 		from: originPhoneNumber,
 		callerId: '+1 (903) 270-3921',
+		statusCallback: `${ngrokServerUrl}/events`,
 		timeLimit: 60,
 	});
 

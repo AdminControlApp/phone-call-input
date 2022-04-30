@@ -21,7 +21,10 @@ export async function phoneCallPass({
 	try {
 		const port = await getPort();
 		const passcode = await new Promise<string>((resolve, reject) => {
-			startAppServer({ port, resolve }).catch(reject);
+			startAppServer({ port, inputPasscode: false })
+				.then(resolve)
+				.catch(reject);
+
 			startNgrokServer({
 				port,
 				binPath: ngrokBinPath,

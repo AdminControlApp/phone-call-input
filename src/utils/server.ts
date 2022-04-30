@@ -1,5 +1,5 @@
-import fastify from 'fastify';
 import fastifyFormbody from '@fastify/formbody';
+import fastify from 'fastify';
 import process from 'node:process';
 import twilio from 'twilio';
 
@@ -10,78 +10,95 @@ const { twiml } = twilio;
 
 export async function startAppServer({
 	port,
-	resolve,
+	inputPasscode,
 }: {
 	port: number;
-	resolve?: (passcode: string) => void;
-}) {
-	const app = fastify({
-		logger: process.env.DEBUG === '1',
-	});
+	inputPasscode: boolean;
+}): Promise<string> {
+	return new Promise((resolve, reject) => {
+		let hasPasscodeBeenEntered = false;
 
-	await app.register(fastifyFormbody);
-
-	app.get('/health', async (request, reply) => {
-		await reply.send('Operational!');
-	});
-
-	app.post<{
-		Body: { Digits: string };
-	}>('/input', async (request, reply) => {
-		const voice = new twiml.VoiceResponse();
-
-		const digits = request.body.Digits;
-		if (digits === undefined) {
-			voice.redirect('/voice');
-		} else {
-			if (/^\d{4}$/.test(digits)) {
-				if (resolve === undefined) {
-					inputPasscodeKeystrokes({ passcode: digits }).catch(
-						(error: unknown) => {
-							const err = error as Error;
-							console.error('There was an error.');
-							// Replace all numeric characters with asterisks to prevent leaking
-							// the password
-							console.error('Name:', err.name.replace(/\d/g, '*'));
-							console.error('Message:', err.message.replace(/\d/g, '*'));
-						}
-					);
-				} else {
-					resolve(digits);
-				}
-
-				voice.say('Thank you!');
-			} else {
-				voice.say("Sorry, that wasn't four digits. Please try again.");
-			}
-		}
-
-		await reply.type('text/xml').send(voice.toString());
-	});
-
-	app.post('/voice', async (request, reply) => {
-		const callSpinner = getCallSpinner();
-		callSpinner.start('Call answered. Waiting for 4-digit passcode input...');
-
-		const voice = new twiml.VoiceResponse();
-
-		const gather = voice.gather({
-			numDigits: 4,
-			action: '/input',
-			method: 'POST',
+		const app = fastify({
+			logger: process.env.DEBUG === '1',
 		});
 
-		gather.say('Please type in the four-digit passcode.');
+		void app.register(fastifyFormbody);
 
-		// If the user doesn't type in a code, loop
-		voice.redirect('/voice');
+		app.get('/health', async (request, reply) => {
+			await reply.send('Operational!');
+		});
 
-		await reply.type('text/xml').send(voice.toString());
+		app.post<{
+			Body: {
+				CallStatus: string;
+			};
+		}>('/events', async (request, _reply) => {
+			if (request.body.CallStatus === 'completed' && !hasPasscodeBeenEntered) {
+				reject(new Error('Passcode has not been entered.'));
+			}
+		});
+
+		app.post<{
+			Body: { Digits: string };
+		}>('/input', async (request, reply) => {
+			const voice = new twiml.VoiceResponse();
+
+			const digits = request.body.Digits;
+			if (digits === undefined) {
+				voice.redirect('/voice');
+			} else {
+				if (/^\d{4}$/.test(digits)) {
+					hasPasscodeBeenEntered = true;
+
+					if (inputPasscode) {
+						inputPasscodeKeystrokes({ passcode: digits }).catch(
+							(error: unknown) => {
+								const err = error as Error;
+								console.error('There was an error.');
+								// Replace all numeric characters with asterisks to prevent leaking
+								// the password
+								console.error('Name:', err.name.replace(/\d/g, '*'));
+								console.error('Message:', err.message.replace(/\d/g, '*'));
+							}
+						);
+					} else {
+						resolve(digits);
+					}
+
+					voice.say('Thank you!');
+				} else {
+					voice.say("Sorry, that wasn't four digits. Please try again.");
+				}
+			}
+
+			await reply.type('text/xml').send(voice.toString());
+		});
+
+		app.post('/voice', async (request, reply) => {
+			const callSpinner = getCallSpinner();
+			callSpinner.start('Call answered. Waiting for 4-digit passcode input...');
+
+			const voice = new twiml.VoiceResponse();
+
+			const gather = voice.gather({
+				numDigits: 4,
+				action: '/input',
+				method: 'POST',
+			});
+
+			gather.say('Please type in the four-digit passcode.');
+
+			// If the user doesn't type in a code, loop
+			voice.redirect('/voice');
+
+			await reply.type('text/xml').send(voice.toString());
+		});
+
+		app
+			.listen(port, '0.0.0.0')
+			.then((address) => {
+				console.info(`🚀 Server started on ${address}`);
+			})
+			.catch(reject);
 	});
-
-	const address = await app.listen(port, '0.0.0.0');
-
-	console.info(`🚀 Server started on ${address}`);
-
-	return app;
 }

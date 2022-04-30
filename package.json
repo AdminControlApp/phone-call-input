@@ -9,14 +9,14 @@
 		"email": "contact@leonzalion.com",
 		"url": "https://leonzalion.com"
 	},
-	"bin": "./src/bin/start.js",
+	"bin": "./src/bin/cli.js",
 	"exports": "./src/index.ts",
 	"type": "module",
 	"scripts": {
 		"preinstall": "pnpm build",
 		"release": "lionp",
 		"build": "node-ts ./scripts/build.ts",
-		"start": "node-ts ./src/bin/start.ts",
+		"start": "dotenv node-ts ./src/bin/cli.ts",
 		"test": "vitest run",
 		"lint": "eslint --cache --fix .",
 		"prettier": "prettier --write .",
