@@ -39,8 +39,7 @@ export async function phoneCallInput({
 						twilioAuthToken,
 					})
 				)
-				.catch(reject)
-				.finally(async () => ngrok.kill());
+				.catch(reject);
 		});
 		return passcode;
 	} catch (error: unknown) {
@@ -51,5 +50,7 @@ export async function phoneCallInput({
 		err.message = err.message.replace(/\d/g, '*');
 
 		throw err;
+	} finally {
+		await ngrok.kill();
 	}
 }
