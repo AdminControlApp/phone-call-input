@@ -1,4 +1,5 @@
 import getPort from 'get-port';
+import ngrok from 'ngrok';
 
 import { makeCall } from './call.js';
 import { startNgrokServer } from './ngrok.js';
@@ -38,7 +39,8 @@ export async function phoneCallInput({
 						twilioAuthToken,
 					})
 				)
-				.catch(reject);
+				.catch(reject)
+				.finally(async () => ngrok.kill());
 		});
 		return passcode;
 	} catch (error: unknown) {
