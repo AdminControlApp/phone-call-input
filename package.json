@@ -44,7 +44,7 @@
 		"fastify": "^3.28.0",
 		"@fastify/formbody": "^6.0.0",
 		"get-port": "^6.1.2",
-		"get-secure-input-processes": "^0.0.0",
+		"get-secure-input-processes": "^0.0.1",
 		"inquirer": "^8.2.2",
 		"log-symbols": "^5.1.0",
 		"ngrok": "^4.3.1",
