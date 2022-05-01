@@ -1,3 +1,4 @@
+import { getSecureInputProcesses } from 'get-secure-input-processes';
 import inquirer from 'inquirer';
 import logSymbols from 'log-symbols';
 import process from 'node:process';
@@ -5,8 +6,6 @@ import pWaitFor from 'p-wait-for';
 import { runAppleScript } from 'run-applescript';
 
 import { getCallSpinner } from '~/utils/spinner.js';
-
-import { getSecureInputProcesses } from 'get-secure-input-processes';
 
 export async function inputPasscodeKeystrokes({
 	passcode,
